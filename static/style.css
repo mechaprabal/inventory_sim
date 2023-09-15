@@ -1,0 +1,90 @@
+
+body{
+    margin: 0px;
+    padding: 0px;
+    background-color:beige;
+    font-size: 1.6rem;
+    font-family: 'Palatino Linotype', Palatino, serif;
+}
+h1{
+    background-color: teal;
+}
+
+nav{
+    align-items:center;
+    background-color:teal;
+    padding: 0.2rem;
+    font-weight: 400;
+    border:2px solid black;
+    height: 4rem;
+}
+a{
+    font-weight: 700;
+    text-decoration: none;
+    float: left;
+    padding: 1rem;
+    text-decoration-color: black;
+    
+}
+a:link {
+    color: black;
+  }
+  
+a:visited {
+color: black;
+}
+
+a:hover {
+color: skyblue;
+}
+
+img{
+    border: 2px dashed black;
+    margin:0.5rem;
+    padding:0.5rem;
+}
+.title{
+    float: right;
+    align-content:center;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.8rem;
+    padding: 1rem;
+}
+.container1{
+    /* display: flex;
+    flex-direction: row; */
+    align-content: center;
+    align-items: center;
+}
+
+.container2{
+    display: flex;
+    flex-direction: row;
+    align-content: space-around;
+
+}
+
+.user_form{
+    width: 100%;
+    float:center;
+    border: 2px dashed black;
+    margin:0.5rem;
+    padding:0.5rem;
+}
+
+.sim_progress{
+    float:right;
+    width: 25%;
+    border: 2px dashed black;
+    margin:0.5rem;
+    padding:0.5rem;
+    text-align: center;
+}
+.info{
+    width: 100%;
+    border: 2px dashed black;
+    margin:0.5rem;
+    padding:0.5rem;
+    text-align: center;
+}
