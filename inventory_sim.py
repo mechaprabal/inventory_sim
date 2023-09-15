@@ -31,9 +31,9 @@ def inventory_model(
     """
     Main inventory function
     """
-    n_weeks = 20
-    lower_demand = 1
-    upper_demand = 4
+    # n_weeks = 20
+    # lower_demand = 1
+    # upper_demand = 4
 
     FIXED_ORDER_COST = f_oc
     FIXED_HOLDING_COST = f_hc
@@ -46,13 +46,13 @@ def inventory_model(
     # np.random.seed(72)
     # np.random.seed(108)
 
-    stock = np.zeros(shape=n_weeks + 1, dtype=int)
+    stock = np.zeros(shape=n_weeks, dtype=int)
     stock[0] = INITIAL_STOCK
 
-    order_cost = np.zeros(shape=n_weeks + 1, dtype=int)
-    holding_cost = np.zeros(shape=n_weeks + 1, dtype=int)
-    stock_out_cost = np.zeros(shape=n_weeks + 1, dtype=int)
-    total_cost = np.zeros(shape=n_weeks + 1, dtype=int)
+    order_cost = np.zeros(shape=n_weeks, dtype=int)
+    holding_cost = np.zeros(shape=n_weeks, dtype=int)
+    stock_out_cost = np.zeros(shape=n_weeks, dtype=int)
+    total_cost = np.zeros(shape=n_weeks, dtype=int)
 
     # Generate demand
     demand = gen_demand(l_demand=lower_demand, u_demand=upper_demand, size=n_weeks)
@@ -60,10 +60,10 @@ def inventory_model(
     print(f"System Demand: \n{demand}")
 
     # Reorder time
-    reorder = np.full(shape=n_weeks + 1, fill_value=99)
+    reorder = np.full(shape=n_weeks, fill_value=99)
     FIXED_REORDER_POINT = f_rop
 
-    for i in range(n_weeks + 1):
+    for i in range(n_weeks):
         if demand[i] < stock[i]:
             print("Demand is less than Stock")
             new_stock = stock[i] - demand[i]
@@ -166,6 +166,7 @@ def inventory_model(
     print(f"Total cost:\n{total_cost}")
 
     return {
+        "demand": demand,
         "stock_detail": stock,
         "reorder_point": reorder,
         "order_cost": order_cost,
