@@ -1,0 +1,172 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inventory Simulation DSS</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}" />
+  </head>
+  <body>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/about/">About</a>
+      <div class="title">Monte Carlo Simulation For Inventory Management</div>
+    </nav>
+    <div class="container1">
+      <div class="user_form">
+        <form method="post">
+          <fieldset>
+            <legend>Configure Inventory Model</legend>
+            <fieldset class="field_details">
+              <legend>Demand</legend>
+              <label for="ldemand">Lower Limit of Demand</label>
+              <input
+                type="number"
+                id="ldemand"
+                name="ldemand"
+                min="1"
+                value="1"
+              />&emsp;
+
+              <label for="udemand">Upper Limit of Demand</label>
+              <input
+                type="number"
+                id="udemand"
+                name="udemand"
+                min="1"
+                value="4"
+              />&emsp;
+            </fieldset>
+
+            <fieldset class="field_details">
+              <legend>Order Delivery Time</legend>
+              <label for="l_odtime">Lower Order Delivery Time</label>
+              <input
+                type="number"
+                id="l_odtime"
+                name="l_odtime"
+                min="1"
+                value="1"
+              />&emsp;
+
+              <label for="u_odtime">Upper Order Delivery Time</label>
+              <input
+                type="number"
+                id="u_odtime"
+                name="u_odtime"
+                min="1"
+                value="3"
+              />&emsp;
+            </fieldset>
+            <fieldset>
+              <legend>Inventory Costs</legend>
+              <label for="ordercost">Order Cost</label>
+              <input
+                type="number"
+                id="ordercost"
+                name="ordercost"
+                min="1"
+                value="30"
+              />&emsp;
+              <label for="holdingcost">Holding Cost</label>
+              <input
+                type="number"
+                id="holdingcost"
+                name="holdingcost"
+                min="1"
+                value="2"
+              />&emsp;
+              <label for="stockoutcost">Stock Out Cost</label>
+              <input
+                type="number"
+                id="stockoutcost"
+                name="stockoutcost"
+                min="1"
+                value="20"
+              />
+            </fieldset>
+            <fieldset>
+              <legend>Simulation Parameters</legend>
+              <label for="nweek">No. of Weeks</label>
+              <input
+                type="number"
+                id="nweek"
+                name="nweek"
+                min="1"
+                value="20"
+              />&emsp;
+              <label for="nsim">No. of Simulation</label>
+              <input
+                type="number"
+                id="nsim"
+                name="nsim"
+                min="1"
+                value="7"
+              />&emsp;
+              <label for="istock">Initial Quantity</label>
+              <input
+                type="number"
+                id="istock"
+                name="istock"
+                min="1"
+                value="6"
+              />&emsp;
+              <label for="roq">Random Seed</label>
+              <input
+                type="number"
+                id="seed"
+                name="seed"
+                min="1"
+                value="99"
+              />&emsp;
+            </fieldset>
+            <fieldset>
+              <legend>Replenishment Details</legend>
+              <label for="rop">Reorder Point</label>
+              <input
+                type="number"
+                id="rop"
+                name="rop"
+                min="1"
+                value="3"
+              />&emsp;
+              <label for="roq">Reorder Quantity</label>
+              <input type="number" id="roq" name="roq" min="1" value="6" />
+            </fieldset>
+          </fieldset>
+          <fieldset>
+            <center>
+              <input type="submit" name="submit" id="submit" value="Submit" />
+            </center>
+          </fieldset>
+        </form>
+      </div>
+      <!-- <div class="sim_progress">Progress Update</div> -->
+    </div>
+    <hr />
+
+    {%if chart_gen %}
+    <div class="info">
+      Long-term average of Total Weekly cost is: {{avg_of_avg}}
+    </div>
+    {% endif %}
+
+    <div class="container2">
+      {%if chart_gen %}
+
+      <br />
+      <div>
+        <center>
+          <img src="{{ url_for('static', filename='total_cost.png')}}""
+          alt="Chart" height="auto" width="70%">
+        </center>
+      </div>
+      <div>
+        <center>
+          <img src="{{ url_for('static', filename='avg_total_cost.png')}}""
+          alt="Chart" height="auto" width="70%">
+        </center>
+      </div>
+      {% endif %}
+    </div>
+  </body>
+</html>
