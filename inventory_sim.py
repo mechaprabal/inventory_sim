@@ -165,6 +165,15 @@ def inventory_model(
     print(f"Stock Out cost:\n{stock_out_cost}")
     print(f"Total cost:\n{total_cost}")
 
+    return {
+        "stock_detail": stock,
+        "reorder_point": reorder,
+        "order_cost": order_cost,
+        "holding_cost": holding_cost,
+        "stockout_cost": stock_out_cost,
+        "total_cost": total_cost,
+    }
+
 
 if __name__ == "__main__":
     inventory_model()
